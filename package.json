@@ -1,0 +1,40 @@
+{
+  "name": "nutriclean-desktop",
+  "version": "1.0.0",
+  "description": "App desktop com Electron + React + Vite + TypeScript e salvamento local",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "vite",
+    "electron:dev": "concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\"",
+    "build": "vite build",
+    "dist": "npm run build && electron-builder --win --x64"
+  },
+  "build": {
+    "appId": "com.leonardo.nutriclean",
+    "productName": "NutriClean",
+    "files": [
+      "dist/**",
+      "electron/**",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    }
+  },
+  "dependencies": {
+    "@electron/remote": "^2.0.9",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0",
+    "typescript": "^5.0.0",
+    "electron": "^26.1.0",
+    "electron-builder": "^24.6.0",
+    "concurrently": "^8.0.0",
+    "wait-on": "^7.0.0"
+  }
+}
